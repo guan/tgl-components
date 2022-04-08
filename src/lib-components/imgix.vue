@@ -39,10 +39,14 @@ export default Vue.extend({
 
   computed: {
     image() {
+      //@ts-ignore
+      const config = this.$config;
+
+      //@ts-ignore
       if (process.env.NODE_ENV === "development") {
         return this.src;
       } else {
-        let url = `${this.$config.IMGIX_BASE_URL}/${this.$config.NUXT_SUBFOLDER}/${this.$config.IMGIX_TARGET_BRANCH}${this.src}?v=${this.$config.CACHE_TIME}&auto=format&auto=compress`;
+        let url = `${config.IMGIX_BASE_URL}/${config.NUXT_SUBFOLDER}/${config.IMGIX_TARGET_BRANCH}${this.src}?v=${config.CACHE_TIME}&auto=format&auto=compress`;
 
         if (this.params) {
           url = url + "&" + this.params;

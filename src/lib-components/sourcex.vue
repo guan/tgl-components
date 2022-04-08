@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts">
+// @ts-nocheck
 import Vue from "vue";
 export default Vue.extend({
   name: "sourcex",
@@ -37,10 +38,11 @@ export default Vue.extend({
 
   computed: {
     imageSrc() {
+      const config = this.$config;
       if (process.env.NODE_ENV === "development") {
         return this.src;
       } else {
-        let url = `${this.$config.IMGIX_BASE_URL}/${this.$config.NUXT_SUBFOLDER}/${this.$config.IMGIX_TARGET_BRANCH}${this.src}?v=${this.$config.CACHE_TIME}&auto=format&auto=compress`;
+        let url = `${config.IMGIX_BASE_URL}/${config.NUXT_SUBFOLDER}/${config.IMGIX_TARGET_BRANCH}${this.src}?v=${config.CACHE_TIME}&auto=format&auto=compress`;
 
         if (this.params) {
           url = url + "&" + this.params;
@@ -50,10 +52,11 @@ export default Vue.extend({
     },
 
     imageSrcset() {
+      const config = this.$config;
       if (process.env.NODE_ENV === "development") {
         return this.srcset;
       } else {
-        let url = `${this.$config.IMGIX_BASE_URL}/${this.$config.NUXT_SUBFOLDER}/${this.$config.IMGIX_TARGET_BRANCH}${this.srcset}?v=${this.$config.CACHE_TIME}&auto=format&auto=compress`;
+        let url = `${config.IMGIX_BASE_URL}/${config.NUXT_SUBFOLDER}/${config.IMGIX_TARGET_BRANCH}${this.srcset}?v=${config.CACHE_TIME}&auto=format&auto=compress`;
 
         if (this.params) {
           url = url + "&" + this.params;
