@@ -1,5 +1,9 @@
 {
   "name": "@guan/tgl-components",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:guan/tgl-components.git"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/guan"
   },
